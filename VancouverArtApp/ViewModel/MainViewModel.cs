@@ -42,7 +42,6 @@ namespace VancouverArtApp.ViewModel
             if (IsInDesignMode)
             {
                 // Code runs in Blend --> create design time data.
-                _art.Add(new art_items());
                 ExecLoad();
             }
             else

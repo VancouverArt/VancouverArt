@@ -94,6 +94,12 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Controls\ArtListControl.xaml.cs">
+      <DependentUpon>ArtListControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\ArtMapControl.xaml.cs">
+      <DependentUpon>ArtMapControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="DataModel\ArtItem.cs" />
     <Compile Include="DataModel\ArtService.cs" />
     <Compile Include="DataModel\DummyArtService.cs" />
@@ -128,6 +134,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ArtListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\ArtMapControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainPage.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>

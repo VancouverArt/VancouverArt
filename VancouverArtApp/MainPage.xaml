@@ -1,30 +1,27 @@
 ﻿<Page
-    x:Class="VancouverArtApp.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:VancouverArtApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:Maps="using:Windows.UI.Xaml.Controls.Maps"
-    DataContext="{Binding Path=Main, Source={StaticResource Locator}}"
-    mc:Ignorable="d" Height="752.935" Width="506.766">
-    <Page.Resources>
-        <DataTemplate x:Key="DataTemplateArtItem">
-            <Grid Height="26" Width="203">
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,0,0,6" TextWrapping="Wrap" Text="{Binding Title}" d:LayoutOverrides="Height"/>
-            </Grid>
-        </DataTemplate>
-    </Page.Resources>
+    xmlns:Controls="using:VancouverArtApp.Controls"
+    x:Class="VancouverArtApp.MainPage"
+    DataContext="{Binding Main, Source={StaticResource Locator}}"
+    mc:Ignorable="d" >
+
 
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="193*"/>
-            <ColumnDefinition Width="167*"/>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="250"/>
         </Grid.ColumnDefinitions>
 
-        <Maps:MapControl x:Name="map"  />
 
-        <ListView Grid.Column="1" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}"/>
+        <Controls:ArtMapControl/>
+        <Controls:ArtListControl Grid.Column="1"/>
+
+
     </Grid>
 </Page>
