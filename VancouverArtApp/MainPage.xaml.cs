@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using System.Threading.Tasks;
+using VancouverArtApp.ViewModel;
 using Windows.Devices.Geolocation;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
@@ -25,7 +26,7 @@ namespace VancouverArtApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-
+        MainViewModel _viewModel;
         //private MobileServiceCollection<art_items, art_items> items;
         private IMobileServiceTable<art_items> artItemsTable = App.MobileService.GetTable<art_items>();
 
@@ -33,10 +34,17 @@ namespace VancouverArtApp
         public MainPage()
         {
             this.InitializeComponent();
+            _viewModel = DataContext as MainViewModel;
 
-            AddArtItemsData();
+            Loaded += MainPage_Loaded;
+           // AddArtItemsData();
 
    
+        }
+
+        private void MainPage_Loaded(object sender, RoutedEventArgs e)
+        {
+            _viewModel.Load.Execute(null);
         }
 
         private async void AddArtItemsData()
