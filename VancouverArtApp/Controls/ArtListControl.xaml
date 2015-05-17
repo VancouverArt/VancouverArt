@@ -27,7 +27,7 @@
 
                 <Image Grid.Row="0" Width="80" Height="80" VerticalAlignment="Top" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,12,0" Source="{Binding ImageUrl}" Stretch="UniformToFill"/>
                 <TextBlock Grid.Row="0" Grid.Column="1" x:Name="textTitle" TextTrimming="CharacterEllipsis" FontWeight="ExtraLight" FontSize="24" VerticalAlignment="Top" TextLineBounds="TrimToCapHeight" Margin="0,0,0,0"  TextWrapping="NoWrap" Text="{Binding Title}" d:LayoutOverrides="Width, LeftPosition, RightPosition"/>
-                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Artist}" Margin="0,0,0,0" FontWeight="Light" FontStyle="Italic"  VerticalAlignment="Center" HorizontalAlignment="Right" TextLineBounds="TrimToBaseline" Foreground="DarkGray"  />
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Artist}" Margin="0,0,0,4" FontWeight="Light" FontStyle="Italic"  VerticalAlignment="Center" HorizontalAlignment="Right" TextLineBounds="TrimToBaseline" Foreground="DarkGray"  />
                 <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" FontWeight="Light" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"  Text="{Binding Description}" />
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,0"  HorizontalAlignment="Right">
                     <Button  Width="36"  Margin="0,0,18,0" Style="{StaticResource ButtonStyleChromeless}" 

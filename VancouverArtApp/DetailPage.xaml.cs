@@ -42,5 +42,13 @@ namespace VancouverArtApp
            //TODO: Set DataContext to art_item corresponding with ID == id
     
         }
+
+        private void OnBackClicked(object sender, RoutedEventArgs e)
+        {
+            if (Frame.CanGoBack)
+            {
+                Frame.GoBack();
+            }
+        }
     }
 }

@@ -8,14 +8,23 @@
     DataContext="{Binding Main.SelectedArt, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
-    <SplitView>
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Back" Label="back" Click="OnBackClicked" />
+            <AppBarButton Icon="Favorite" Label="favorite" />
+            <AppBarButton Icon="Directions" Label="directions" />
+            <AppBarButton Icon="Pin" Label="pin" />
+        </CommandBar>
+    </Page.BottomAppBar>
+    
+    <!--SplitView>
         <SplitView.Pane>
             <StackPanel>
                 <Button Width="36" Style="{StaticResource ButtonStyleChromeless}" 
                             FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="6,2,0,2" Content="&#xE0A6;" />
             </StackPanel>
         </SplitView.Pane>
-        <SplitView.Content>
+        <SplitView.Content-->
 
             <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
                 <!--Grid.RowDefinitions>
@@ -27,10 +36,10 @@
                     <TextBlock x:Name="textTitle" FontSize="32" TextWrapping="Wrap" Text="{Binding Title}" />
                     <TextBlock x:Name="textArtist" FontSize="18" TextWrapping="Wrap" Text="{Binding Artist}" />
                 </StackPanel>
-                <TextBlock x:Name="textDescription" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Bottom" Padding="12,12,12,12"/>
+                <TextBlock x:Name="textDescription" FontSize="14" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Bottom" Padding="12,12,12,12"/>
             </Grid>
             
-        </SplitView.Content>
-    </SplitView>
+        <!--/SplitView.Content>
+    </SplitView-->
     
 </Page>

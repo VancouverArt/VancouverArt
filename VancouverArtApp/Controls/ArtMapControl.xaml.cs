@@ -33,10 +33,15 @@ namespace VancouverArtApp.Controls
          
 
             map.MapServiceToken = "abcdef-abcdefghijklmno";
-            map.Center = new Geopoint(new BasicGeoposition {Latitude = 49.285d, Longitude = -123.11d });
-            map.ZoomLevel = 13.5d;
 
+            Recenter();
             ReplaceMapTiles();
+        }
+
+        public void Recenter()
+        {
+            map.Center = new Geopoint(new BasicGeoposition { Latitude = 49.285d, Longitude = -123.11d });
+            map.ZoomLevel = 13.5d;
         }
 
         private void ReplaceMapTiles()

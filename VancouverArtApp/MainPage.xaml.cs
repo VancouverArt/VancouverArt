@@ -98,5 +98,10 @@ namespace VancouverArtApp
                 overviewPivot.Header = null;
             }
         }
+
+        private void OnHomeClicked(object sender, RoutedEventArgs e)
+        {
+            artMapControl.Recenter();
+        }
     }
 }
