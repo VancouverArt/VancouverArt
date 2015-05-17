@@ -94,7 +94,7 @@ namespace VancouverArtApp.ViewModel
 
 
 
-        }
+        
 
         public event System.EventHandler DataLoaded;
 
