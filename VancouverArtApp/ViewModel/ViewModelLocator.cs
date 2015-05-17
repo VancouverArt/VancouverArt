@@ -45,6 +45,7 @@ namespace VancouverArtApp.ViewModel
             }
 
             SimpleIoc.Default.Register<MainViewModel>();
+            SimpleIoc.Default.Register<DetailViewModel>();
         }
 
         public MainViewModel Main
@@ -52,6 +53,14 @@ namespace VancouverArtApp.ViewModel
             get
             {
                 return ServiceLocator.Current.GetInstance<MainViewModel>();
+            }
+        }
+
+        public DetailViewModel Detail
+        {
+            get
+            {
+                return ServiceLocator.Current.GetInstance<DetailViewModel>();
             }
         }
 

@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using VancouverArtApp.DataModel;
+using System.Linq;
 
 namespace VancouverArtApp.ViewModel
 {
@@ -27,6 +28,15 @@ namespace VancouverArtApp.ViewModel
             set { _art = value; }
         }
 
+        private art_items selectedArt;
+
+        public art_items SelectedArt
+        {
+            get { return selectedArt; }
+            set { selectedArt = value; }
+        }
+
+
         IArtService _artService;
 
         /// <summary>
@@ -41,7 +51,7 @@ namespace VancouverArtApp.ViewModel
 
             if (IsInDesignMode)
             {
-                // Code runs in Blend --> create design time data.
+                // Code runs in Blend --> create design time data. 
                 ExecLoad();
             }
             else
@@ -79,15 +89,12 @@ namespace VancouverArtApp.ViewModel
             {
                 _art.Add(item);
             }
-
-            if (DataLoaded != null)
-            {
-                DataLoaded(this, System.EventArgs.Empty);
-            }
-
-
-
+            SelectedArt = _art.FirstOrDefault();
         }
+
+
+
+        
 
         public event System.EventHandler DataLoaded;
 

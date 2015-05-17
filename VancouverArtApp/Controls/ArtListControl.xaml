@@ -63,6 +63,6 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListView Grid.Column="1" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
+        <ListView Grid.Column="1" IsItemClickEnabled="True" ItemClick="OnClick" SelectedItem="{Binding SelectedArt, Mode=TwoWay}" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
     </Grid>
 </UserControl>
