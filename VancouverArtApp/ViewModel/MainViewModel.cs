@@ -51,7 +51,7 @@ namespace VancouverArtApp.ViewModel
 
             if (IsInDesignMode)
             {
-                // Code runs in Blend --> create design time data.
+                // Code runs in Blend --> create design time data. 
                 ExecLoad();
             }
             else
@@ -93,6 +93,10 @@ namespace VancouverArtApp.ViewModel
         }
 
 
+
+        }
+
+        public event System.EventHandler DataLoaded;
 
     }
 }
