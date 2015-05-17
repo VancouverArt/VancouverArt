@@ -80,9 +80,16 @@ namespace VancouverArtApp.ViewModel
                 _art.Add(item);
             }
 
+            if (DataLoaded != null)
+            {
+                DataLoaded(this, System.EventArgs.Empty);
+            }
+
+
+
         }
 
-
+        public event System.EventHandler DataLoaded;
 
     }
 }

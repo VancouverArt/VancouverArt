@@ -14,7 +14,7 @@
   <mp:PhoneIdentity PhoneProductId="25eafb3a-5b60-4a20-801b-07c3723e042c" PhonePublisherId="00000000-0000-0000-0000-000000000000"/>
 
   <Properties>
-    <DisplayName>VancouverArtApp</DisplayName>
+    <DisplayName>Vancouver Art</DisplayName>
     <PublisherDisplayName>Microsoft</PublisherDisplayName>
     <Logo>Assets\StoreLogo.png</Logo>
   </Properties>
@@ -32,7 +32,7 @@
       Executable="$targetnametoken$.exe"
       EntryPoint="VancouverArtApp.App">
       <uap:VisualElements
-        DisplayName="VancouverArtApp"
+        DisplayName="Vancouver Art"
         Square150x150Logo="Assets\Logo.png"
         Square44x44Logo="Assets\SmallLogo.png"
         Description="VancouverArtApp"
