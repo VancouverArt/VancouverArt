@@ -32,9 +32,35 @@ namespace VancouverArtApp.Controls
             DataContextChanged += ArtMapControl_DataContextChanged;
          
 
-            //map.MapServiceToken = "abcdef-abcdefghijklmno";
-            map.Center = new Geopoint(new BasicGeoposition {Latitude = 49.285d, Longitude = -123.11d });
-            map.ZoomLevel = 13.7d;
+            map.MapServiceToken = "abcdef-abcdefghijklmno";
+
+            CenterOnCity();
+            //ReplaceMapTiles();
+        }
+
+        public void CenterOnCity()
+        {
+            map.Center = new Geopoint(new BasicGeoposition { Latitude = 49.285d, Longitude = -123.11d });
+            map.ZoomLevel = 13.5d;
+        }
+
+        public void CenterOnUser()
+        {
+            if (_mapIcon != null)
+            {
+                map.Center = _mapIcon.Location;
+                //map.ZoomLevel = 13.5d;
+            }
+        }
+
+
+        private void ReplaceMapTiles()
+        {
+            var httpsource = new HttpMapTileDataSource("http://api.tiles.mapbox.com/v4/mapbox.light/{zoomlevel}/{x}/{y}.png?access_token=pk.eyJ1Ijoic29tZWd1eW5hbWVkZGF2ZSIsImEiOiIxZTZwa0RnIn0.-T20f-wDGabHoGeYEHn49Q");
+            var ts = new MapTileSource(httpsource);
+            ts.Layer = MapTileLayer.BackgroundReplacement;
+            map.TileSources.Add(ts);
+            map.Style = MapStyle.None;
         }
 
         private void ArtMapControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
@@ -60,10 +86,28 @@ namespace VancouverArtApp.Controls
             }
         }
 
-        private void Overlay_Tapped(object sender, TappedRoutedEventArgs e)
-        {
 
-            //TODO: call _viewModel to launch DetailPage
+        private MapIcon _mapIcon = null;
+
+        public void UpdatePosition(double latitude, double longitude)
+        {
+            if (_mapIcon == null)
+            {
+                _mapIcon = new MapIcon
+                {
+                    Title = "You are here",
+                    //Image = Windows.Storage.Streams.RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/redpin.jpg")),
+                    NormalizedAnchorPoint = new Point(0.5d, 1d),
+                    CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible
+                };
+                map.MapElements.Add(_mapIcon);
+            }
+            _mapIcon.Location = new Geopoint(new BasicGeoposition { Latitude = latitude, Longitude = longitude });
+        }
+
+        private void OnClicked(object sender, TappedRoutedEventArgs e)
+        {
+            (Window.Current.Content as Frame).Navigate(typeof(DetailPage), ((art_items)((Grid)sender).DataContext).Id);
         }
     }
 }

@@ -11,8 +11,9 @@
     mc:Ignorable="d" >
     <Page.BottomAppBar>
         <CommandBar>
-            <AppBarButton Icon="Accept" Label="appbarbutton"/>
-            <AppBarButton Icon="Cancel" Label="appbarbutton"/>
+            <!--AppBarButton Icon="Accept" Label="appbarbutton"/-->
+            <AppBarButton Icon="Home" Label="Vancouver" Click="OnHomeClicked"  />
+            <AppBarButton Icon="Target" Label="My location" Click="OnLocationClicked"/>
         </CommandBar>
     </Page.BottomAppBar>
 
@@ -58,7 +59,8 @@
         <PivotItem x:Name="overviewPivot" >
 
             <PivotItem.Header>
-                <Image Source="Assets/Bullets - 03.png" Height="30" Margin="0,0,12,12"/>
+                <!--Image Source="Assets/Bullets - 03.png" Height="30" Margin="0,0,12,12"/-->
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="28">&#xE179;</TextBlock>
             </PivotItem.Header>
             <Grid x:Name="overviewGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         
@@ -77,7 +79,8 @@
         </PivotItem>
         <PivotItem x:Name="mapPivot" IsEnabled="False">
             <PivotItem.Header>
-                <Image Source="Assets/Map-Location.png" Margin="0,0,0,12"/>
+                <!--Image Source="Assets/Map-Location.png" Margin="0,0,0,12"/-->
+                <TextBlock FontFamily="Segoe MDL2 Assets" FontSize="28">&#xE128;</TextBlock>
             </PivotItem.Header>
 
             <Controls:ArtMapControl/>
