@@ -25,12 +25,12 @@
                                     Foreground="{StaticResource TextBoxBackgroundThemeBrush}"/-->
                             <Rectangle Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top">
                                 <Rectangle.Fill>
-                                    <SolidColorBrush Color="Gray" />
+                                    <SolidColorBrush Color="Black" />
                                 </Rectangle.Fill>
                             </Rectangle>
                             <Ellipse Height="60" Width="60">
                                 <Ellipse.Fill>
-                                    <SolidColorBrush Color="Gray" />
+                                    <SolidColorBrush Color="Black" />
                                 </Ellipse.Fill>
                             </Ellipse>
                             <Ellipse Height="56" Width="56">
