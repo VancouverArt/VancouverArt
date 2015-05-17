@@ -34,7 +34,7 @@ namespace VancouverArtApp.Controls
 
             //map.MapServiceToken = "abcdef-abcdefghijklmno";
             map.Center = new Geopoint(new BasicGeoposition {Latitude = 49.285d, Longitude = -123.11d });
-            map.ZoomLevel = 13.7d;
+            map.ZoomLevel = 13.5d;
         }
 
         private void ArtMapControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
@@ -60,10 +60,11 @@ namespace VancouverArtApp.Controls
             }
         }
 
-        private void Overlay_Tapped(object sender, TappedRoutedEventArgs e)
+        private void OnClicked(object sender, TappedRoutedEventArgs e)
         {
 
             //TODO: call _viewModel to launch DetailPage
+            (Window.Current.Content as Frame).Navigate(typeof(DetailPage));
         }
     }
 }
