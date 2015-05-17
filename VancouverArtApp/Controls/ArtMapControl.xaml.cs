@@ -116,7 +116,9 @@ namespace VancouverArtApp.Controls
 
         private void OnClicked(object sender, TappedRoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(DetailPage), ((art_items)((Grid)sender).DataContext).Id);
+            (DataContext as MainViewModel).SelectedArt = (art_items)((Grid)sender).DataContext;
+            (Window.Current.Content as Frame).Navigate(typeof(DetailPage));
+            
         }
     }
 }

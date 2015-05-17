@@ -89,7 +89,7 @@
                 </Grid.RowDefinitions>
                 <Image  Stretch="UniformToFill" Source="{Binding ImageUrl, FallbackValue=Assets/diner1.jpg, TargetNullValue=Assets/diner1.jpg}" HorizontalAlignment="Left" Margin="12,0,0,0"/>
                 <TextBlock Grid.Row="1" FontSize="20" Text="Remind next im I'm close by" VerticalAlignment="Center" HorizontalAlignment="Right" Margin="0,0,140,0" />
-                <ToggleSwitch FontSize="20" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,-30,0"/>
+                <ToggleSwitch IsOn="{Binding ReminderOn, Mode=TwoWay}" FontSize="20" VerticalAlignment="Bottom" Grid.Row="1" HorizontalAlignment="Right" Margin="0,0,-30,0"/>
             </Grid>
 
             <TextBlock x:Name="textBlock1" Grid.Row="2" Grid.Column="1" TextWrapping="Wrap" Text="{Binding Description}" Foreground="DarkGray" FontWeight="Light" FontStyle="Italic" FontSize="28" Margin="20,0,20,20" />

@@ -12,7 +12,7 @@
     >
     <UserControl.Resources>
         <DataTemplate x:Key="DataTemplateArtItem">
-            <Grid Height="Auto" Margin="0,6,6,0" >
+            <Grid Height="Auto" Margin="0,6,6,20" >
                 <Grid.RowDefinitions>
                     <RowDefinition Height="Auto"/>
                     <RowDefinition Height="60"/>
@@ -30,11 +30,12 @@
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Artist}" Margin="0,0,0,4" FontWeight="Light" FontStyle="Italic"  VerticalAlignment="Center" HorizontalAlignment="Right" TextLineBounds="TrimToBaseline" Foreground="DarkGray"  />
                 <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" FontWeight="Light" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"  Text="{Binding Description}" />
                 <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,0"  HorizontalAlignment="Right">
-                    <Button  Width="36"  Margin="0,0,18,0" Style="{StaticResource ButtonStyleChromeless}" 
+                    <!--<Button  Width="36"  Margin="0,0,18,0" Style="{StaticResource ButtonStyleChromeless}" 
                              FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="2,2,2,2" Content="&#xE006;">
-                        <!--Image Source="ms-appx:///Assets/Like - 01.png" Stretch="UniformToFill"/-->
-                    </Button>
-                    <Button Width="36" Style="{StaticResource ButtonStyleChromeless}" 
+                       
+                    </Button>-->
+                    <TextBlock Text="600m" />
+                    <Button Width="36" Visibility="{Binding ReminderVisible}" Style="{StaticResource ButtonStyleChromeless}" 
                             FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="6,2,0,2" Content="&#xEA8F;">
                         <!--Image Source="ms-appx:///Assets/Reminder -02.png" Stretch="UniformToFill"/-->
                     </Button>
@@ -65,6 +66,6 @@
         </Style>
     </UserControl.Resources>
     <Grid>
-        <ListView Grid.Column="1" IsItemClickEnabled="True" ItemClick="OnClick" SelectedItem="{Binding SelectedArt, Mode=TwoWay}" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
+        <ListView Grid.Column="1" IsItemClickEnabled="True" ItemClick="OnClick" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
     </Grid>
 </UserControl>

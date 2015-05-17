@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using VancouverArtApp.ViewModel;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
 using Windows.UI.Xaml;
@@ -26,6 +27,7 @@ namespace VancouverArtApp.Controls
 
         private void OnClick(object sender, ItemClickEventArgs e)
         {
+            (DataContext as MainViewModel).SelectedArt = e.ClickedItem as art_items;
             (Window.Current.Content as Frame).Navigate(typeof(DetailPage));
         }
     }

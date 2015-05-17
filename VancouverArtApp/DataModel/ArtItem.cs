@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using Windows.Devices.Geolocation;
+using Windows.UI.Xaml;
 
 namespace VancouverArtApp//ZUMOAPPNAME.DataModel
 {
@@ -35,8 +36,24 @@ namespace VancouverArtApp//ZUMOAPPNAME.DataModel
         {
             get
             {
-                return new Geopoint(new BasicGeoposition {Latitude = this.Latitude, Longitude = this.Longitude });
+                return new Geopoint(new BasicGeoposition { Latitude = this.Latitude, Longitude = this.Longitude });
             }
         }
+
+        private bool _reminderOn;
+
+        public bool ReminderOn
+        {
+            get { return _reminderOn; }
+            set
+            {
+                _reminderOn = value;
+
+         
+            }
+        }
+
+        public Visibility ReminderVisible { get {return _reminderOn? Visibility.Visible: Visibility.Collapsed; } }
+
     }
 }
