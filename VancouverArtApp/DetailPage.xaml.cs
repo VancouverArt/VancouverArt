@@ -50,5 +50,30 @@ namespace VancouverArtApp
                 Frame.GoBack();
             }
         }
+
+        async private void OnDirectionsClicked(object sender, RoutedEventArgs e)
+        {
+            // The URI to launch
+            //string uriToLaunch = @"bingmaps:?cp=40.726966~-74.006076&lvl=10";
+
+            art_items art = this.DataContext as art_items;
+
+
+            string uriToLaunch = String.Format("ms-drive-to:?cp=49.285~-123.11&lvl=15&destination.latitude={0}&destination.longitude={1}&destination.name={2}"
+                , art.Latitude, art.Longitude, art.Title);
+            var uri = new Uri(uriToLaunch);
+
+            // Launch the URI
+            var success = await Windows.System.Launcher.LaunchUriAsync(uri);
+            if (success)
+            {
+                // URI launched
+            }
+            else
+            {
+                // URI launch failed
+            }
+
+        }
     }
 }

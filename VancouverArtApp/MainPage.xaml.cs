@@ -22,6 +22,14 @@ using Windows.UI.Xaml.Navigation;
 
 namespace VancouverArtApp
 {
+    public static class User
+    {
+        public static double Latitude;
+        public static double Longitude;
+    }
+
+
+
     /// <summary>
     /// An empty page that can be used on its own or navigated to within a Frame.
     /// </summary>
@@ -148,6 +156,10 @@ namespace VancouverArtApp
 
                 // Carry out the operation 
                 Geoposition pos = await geolocator.GetGeopositionAsync().AsTask(token);
+
+                User.Latitude = pos.Coordinate.Latitude;
+                User.Longitude = pos.Coordinate.Longitude;
+              
 
                 artMapControl.CenterOn(pos);
             }

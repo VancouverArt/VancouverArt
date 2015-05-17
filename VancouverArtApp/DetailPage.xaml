@@ -12,7 +12,7 @@
         <CommandBar>
             <AppBarButton Icon="Back" Label="back" Click="OnBackClicked" />
             <AppBarButton Icon="Favorite" Label="favorite" />
-            <AppBarButton Icon="Directions" Label="directions" />
+            <AppBarButton Icon="Directions" Label="directions" Click="OnDirectionsClicked"/>
             <AppBarButton Icon="Pin" Label="pin" />
         </CommandBar>
     </Page.BottomAppBar>
