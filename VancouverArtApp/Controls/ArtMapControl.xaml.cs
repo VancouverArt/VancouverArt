@@ -32,9 +32,20 @@ namespace VancouverArtApp.Controls
             DataContextChanged += ArtMapControl_DataContextChanged;
          
 
-            //map.MapServiceToken = "abcdef-abcdefghijklmno";
+            map.MapServiceToken = "abcdef-abcdefghijklmno";
             map.Center = new Geopoint(new BasicGeoposition {Latitude = 49.285d, Longitude = -123.11d });
             map.ZoomLevel = 13.5d;
+
+            ReplaceMapTiles();
+        }
+
+        private void ReplaceMapTiles()
+        {
+            var httpsource = new HttpMapTileDataSource("http://api.tiles.mapbox.com/v4/mapbox.light/{zoomlevel}/{x}/{y}.png?access_token=pk.eyJ1Ijoic29tZWd1eW5hbWVkZGF2ZSIsImEiOiIxZTZwa0RnIn0.-T20f-wDGabHoGeYEHn49Q");
+            var ts = new MapTileSource(httpsource);
+            ts.Layer = MapTileLayer.BackgroundReplacement;
+            map.TileSources.Add(ts);
+            map.Style = MapStyle.None;
         }
 
         private void ArtMapControl_DataContextChanged(FrameworkElement sender, DataContextChangedEventArgs args)
@@ -62,9 +73,7 @@ namespace VancouverArtApp.Controls
 
         private void OnClicked(object sender, TappedRoutedEventArgs e)
         {
-
-            //TODO: call _viewModel to launch DetailPage
-            (Window.Current.Content as Frame).Navigate(typeof(DetailPage));
+            (Window.Current.Content as Frame).Navigate(typeof(DetailPage), ((art_items)((Grid)sender).DataContext).Id);
         }
     }
 }

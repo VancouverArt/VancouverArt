@@ -32,5 +32,15 @@ namespace VancouverArtApp
         {
             var bla = this.DataContext;
         }
+
+        protected override void OnNavigatedTo(NavigationEventArgs e)
+        {
+            base.OnNavigatedTo(e);
+
+            string id = e.Parameter as string;
+            
+           //TODO: Set DataContext to art_item corresponding with ID == id
+    
+        }
     }
 }
