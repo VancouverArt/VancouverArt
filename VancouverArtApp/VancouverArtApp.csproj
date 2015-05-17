@@ -103,6 +103,7 @@
     <Compile Include="DataModel\ArtItem.cs" />
     <Compile Include="DataModel\ArtService.cs" />
     <Compile Include="DataModel\DummyArtService.cs" />
+    <Compile Include="DataModel\GeoCalc.cs" />
     <Compile Include="DataModel\IArtService.cs" />
     <Compile Include="DetailPage.xaml.cs">
       <DependentUpon>DetailPage.xaml</DependentUpon>

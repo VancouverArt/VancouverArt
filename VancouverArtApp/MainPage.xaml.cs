@@ -74,6 +74,8 @@ namespace VancouverArtApp
         private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
         {
             SetStatelayout();
+
+           
         }
 
         private void SetStatelayout()
