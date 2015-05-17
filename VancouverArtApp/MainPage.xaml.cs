@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
+using System.Threading;
 using System.Threading.Tasks;
 using VancouverArtApp.ViewModel;
 using Windows.Devices.Geolocation;
@@ -127,9 +128,26 @@ namespace VancouverArtApp
             artMapControl.CenterOnCity();
         }
 
-        private void OnLocationClicked(object sender, RoutedEventArgs e)
+        private CancellationTokenSource _cts = null;
+
+        async private void OnLocationClicked(object sender, RoutedEventArgs e)
         {
-            artMapControl.CenterOnUser();
+            // Request permission to access location 
+            var accessStatus = await Geolocator.RequestAccessAsync();
+            if (accessStatus == GeolocationAccessStatus.Allowed)
+            {
+                // Get cancellation token 
+                _cts = new CancellationTokenSource();
+                CancellationToken token = _cts.Token;
+
+                // If DesiredAccuracy or DesiredAccuracyInMeters are not set (or value is 0), DesiredAccuracy.Default is used. 
+                Geolocator geolocator = new Geolocator { DesiredAccuracyInMeters = 0 };
+
+                // Carry out the operation 
+                Geoposition pos = await geolocator.GetGeopositionAsync().AsTask(token);
+
+                artMapControl.CenterOn(pos);
+            }
         }
     }
 }

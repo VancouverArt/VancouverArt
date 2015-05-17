@@ -44,13 +44,22 @@ namespace VancouverArtApp.Controls
             map.ZoomLevel = 13.5d;
         }
 
-        public void CenterOnUser()
+        public void CenterOn(Geoposition pos)
         {
-            if (_mapIcon != null)
+            if (_mapIcon == null)
             {
-                map.Center = _mapIcon.Location;
-                //map.ZoomLevel = 13.5d;
+                _mapIcon = new MapIcon
+                {
+                    Title = "You are here",
+                    //Image = Windows.Storage.Streams.RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/redpin.jpg")),
+                    NormalizedAnchorPoint = new Point(0.5d, 1d),
+                    CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible
+                };
+                map.MapElements.Add(_mapIcon);
             }
+            map.Center = _mapIcon.Location = new Geopoint(new BasicGeoposition { Latitude = pos.Coordinate.Latitude, Longitude = pos.Coordinate.Longitude });
+            //map.ZoomLevel = 13.5d;
+
         }
 
 
