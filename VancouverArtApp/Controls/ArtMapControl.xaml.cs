@@ -34,15 +34,25 @@ namespace VancouverArtApp.Controls
 
             map.MapServiceToken = "abcdef-abcdefghijklmno";
 
-            Recenter();
-            ReplaceMapTiles();
+            CenterOnCity();
+            //ReplaceMapTiles();
         }
 
-        public void Recenter()
+        public void CenterOnCity()
         {
             map.Center = new Geopoint(new BasicGeoposition { Latitude = 49.285d, Longitude = -123.11d });
             map.ZoomLevel = 13.5d;
         }
+
+        public void CenterOnUser()
+        {
+            if (_mapIcon != null)
+            {
+                map.Center = _mapIcon.Location;
+                //map.ZoomLevel = 13.5d;
+            }
+        }
+
 
         private void ReplaceMapTiles()
         {
@@ -74,6 +84,25 @@ namespace VancouverArtApp.Controls
                 };
                 map.MapElements.Add(icon);
             }
+        }
+
+
+        private MapIcon _mapIcon = null;
+
+        public void UpdatePosition(double latitude, double longitude)
+        {
+            if (_mapIcon == null)
+            {
+                _mapIcon = new MapIcon
+                {
+                    Title = "You are here",
+                    //Image = Windows.Storage.Streams.RandomAccessStreamReference.CreateFromUri(new Uri("ms-appx:///Assets/redpin.jpg")),
+                    NormalizedAnchorPoint = new Point(0.5d, 1d),
+                    CollisionBehaviorDesired = MapElementCollisionBehavior.RemainVisible
+                };
+                map.MapElements.Add(_mapIcon);
+            }
+            _mapIcon.Location = new Geopoint(new BasicGeoposition { Latitude = latitude, Longitude = longitude });
         }
 
         private void OnClicked(object sender, TappedRoutedEventArgs e)

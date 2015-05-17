@@ -30,6 +30,8 @@ namespace VancouverArtApp
         //private MobileServiceCollection<art_items, art_items> items;
         private IMobileServiceTable<art_items> artItemsTable = App.MobileService.GetTable<art_items>();
 
+        private Geolocator _locator;
+
         object mapHeader;
         object listHeader;
         public MainPage()
@@ -43,7 +45,28 @@ namespace VancouverArtApp
 
             mapHeader = mapPivot.Header;
             listHeader = overviewPivot.Header;
+
+            InitGeolocation();
         }
+
+
+        private void InitGeolocation()
+        {
+            _locator = new Geolocator();
+            _locator.DesiredAccuracy = PositionAccuracy.High;
+            _locator.DesiredAccuracyInMeters = 0;
+            _locator.MovementThreshold = 0;
+            _locator.PositionChanged += Locator_PositionChanged;
+        }
+
+        private void Locator_PositionChanged(Geolocator sender, PositionChangedEventArgs args)
+        {
+            var _ = Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal, () =>
+            {
+                artMapControl.UpdatePosition(args.Position.Coordinate.Point.Position.Latitude, args.Position.Coordinate.Point.Position.Longitude);
+            });
+        }
+
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
         {
@@ -101,7 +124,12 @@ namespace VancouverArtApp
 
         private void OnHomeClicked(object sender, RoutedEventArgs e)
         {
-            artMapControl.Recenter();
+            artMapControl.CenterOnCity();
+        }
+
+        private void OnLocationClicked(object sender, RoutedEventArgs e)
+        {
+            artMapControl.CenterOnUser();
         }
     }
 }

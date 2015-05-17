@@ -13,7 +13,7 @@
         <CommandBar>
             <!--AppBarButton Icon="Accept" Label="appbarbutton"/-->
             <AppBarButton Icon="Home" Label="Vancouver" Click="OnHomeClicked"  />
-            <AppBarButton Icon="Target" Label="My location"/>
+            <AppBarButton Icon="Target" Label="My location" Click="OnLocationClicked"/>
         </CommandBar>
     </Page.BottomAppBar>
 
