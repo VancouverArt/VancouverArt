@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using Windows.Devices.Geolocation;
 
 namespace VancouverArtApp//ZUMOAPPNAME.DataModel
 {
@@ -30,6 +31,12 @@ namespace VancouverArtApp//ZUMOAPPNAME.DataModel
         [JsonProperty(PropertyName = "tags")]
         public string Tags { get; set; }
 
-
+        public Geopoint Location
+        {
+            get
+            {
+                return new Geopoint(new BasicGeoposition {Latitude = this.Latitude, Longitude = this.Longitude });
+            }
+        }
     }
 }

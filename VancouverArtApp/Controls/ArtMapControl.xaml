@@ -9,8 +9,42 @@
     mc:Ignorable="d"
     d:DesignHeight="300"
     d:DesignWidth="400">
-    
+
     <Grid>
-        <Maps:MapControl x:Name="map"  />
+        <Maps:MapControl x:Name="map">
+            <Maps:MapItemsControl ItemsSource="{Binding Art}">
+                <Maps:MapItemsControl.ItemTemplate>
+                    <DataTemplate>   
+                        <Grid Background="Transparent" Tapped="Overlay_Tapped"
+                              Maps:MapControl.Location="{Binding Location}" 
+                              Maps:MapControl.NormalizedAnchorPoint="0,0" >                        
+                            <!--TextBlock Maps:MapControl.Location="{Binding Location}" 
+                                    Text="{Binding Title}" 
+                                    Maps:MapControl.NormalizedAnchorPoint="1.0,0.5"
+                                    FontSize="12"
+                                    Foreground="{StaticResource TextBoxBackgroundThemeBrush}"/-->
+                            <Rectangle Height="30" Width="30" HorizontalAlignment="Left" VerticalAlignment="Top">
+                                <Rectangle.Fill>
+                                    <SolidColorBrush Color="Gray" />
+                                </Rectangle.Fill>
+                            </Rectangle>
+                            <Ellipse Height="60" Width="60">
+                                <Ellipse.Fill>
+                                    <SolidColorBrush Color="Gray" />
+                                </Ellipse.Fill>
+                            </Ellipse>
+                            <Ellipse Height="56" Width="56">
+                                <Ellipse.Fill>
+                                    <ImageBrush ImageSource="{Binding ImageUrl}" />
+                                    <!--ImageBrush ImageSource="https://1fys3a.dm2302.livefilestore.com/y2p1vyuuk-GS8pzNaqk4vO9zV4U3syGuJOjfuaJBXX7VNRKlnfFiqwSNOf5K-w3qt60zzYnYMx2hUfum-ntq9cjffcbgum2UboomQWHr31hZpaZO9IKPno-w6CLJreRyWWGrbPxKnNWv1Yu05dyZf9_cRYQtJpd4NBSCA5nawujMPM/WP_20140402_10_09_06_Pro%20-%20Copy.jpg" /-->
+                                    <!--ImageBrush ImageSource="http://2.bp.blogspot.com/-VicreWCUqZc/UXhcDWZ2fuI/AAAAAAAADps/jOCTJqONiAw/s640/InstallationArt_Vancouver.jpg" /-->
+                                </Ellipse.Fill>
+                            </Ellipse>
+                        </Grid>
+                    </DataTemplate>
+                </Maps:MapItemsControl.ItemTemplate>
+            </Maps:MapItemsControl>
+
+        </Maps:MapControl>
     </Grid>
 </UserControl>
