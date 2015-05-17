@@ -9,19 +9,79 @@
     x:Class="VancouverArtApp.MainPage"
     DataContext="{Binding Main, Source={StaticResource Locator}}"
     mc:Ignorable="d" >
+    <Page.BottomAppBar>
+        <CommandBar>
+            <AppBarButton Icon="Accept" Label="appbarbutton"/>
+            <AppBarButton Icon="Cancel" Label="appbarbutton"/>
+        </CommandBar>
+    </Page.BottomAppBar>
 
 
+    <Pivot>
+        <Pivot.Title>
+            <TextBlock Text="Vancouver Art" FontSize="33" FontWeight="Light"/>
+        </Pivot.Title>
+        <VisualStateManager.VisualStateGroups >
+            <VisualStateGroup x:Name="VisualStateGroup" CurrentStateChanged="VisualStateGroup_CurrentStateChanged">
+                <VisualState x:Name="Small">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="0"/>
+                    </VisualState.StateTriggers>
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                    <Storyboard>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(UIElement.Visibility)" Storyboard.TargetName="artMapControl">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <Visibility>Collapsed</Visibility>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                        <ObjectAnimationUsingKeyFrames Storyboard.TargetProperty="(Grid.ColumnSpan)" Storyboard.TargetName="artListControl">
+                            <DiscreteObjectKeyFrame KeyTime="0">
+                                <DiscreteObjectKeyFrame.Value>
+                                    <x:Int32>2</x:Int32>
+                                </DiscreteObjectKeyFrame.Value>
+                            </DiscreteObjectKeyFrame>
+                        </ObjectAnimationUsingKeyFrames>
+                     
+
+                    </Storyboard>
+
+                </VisualState>
+                <VisualState x:Name="Large">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="600"/>
+                    </VisualState.StateTriggers>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+        <PivotItem x:Name="overviewPivot" >
+
+            <PivotItem.Header>
+                <Image Source="Assets/Bullets - 03.png" Height="30" Margin="0,0,12,12"/>
+            </PivotItem.Header>
+            <Grid x:Name="overviewGrid" Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="*"/>
-            <ColumnDefinition Width="350"/>
+            <ColumnDefinition Width="1*" MaxWidth="350"/>
+            <ColumnDefinition Width="1*"/>
         </Grid.ColumnDefinitions>
+    
 
-
-        <Controls:ArtMapControl/>
-        <Controls:ArtListControl Grid.Column="1"/>
+     <Controls:ArtListControl x:Name="artListControl" Width="Auto"  />
+        <Controls:ArtMapControl x:Name="artMapControl" Grid.Column="1"/>
+   
 
 
     </Grid>
+        </PivotItem>
+        <PivotItem x:Name="mapPivot" IsEnabled="False">
+            <PivotItem.Header>
+                <Image Source="Assets/Map-Location.png" Margin="0,0,0,12"/>
+            </PivotItem.Header>
+
+            <Controls:ArtMapControl/>
+        </PivotItem>
+    </Pivot>
+  
 </Page>

@@ -13,20 +13,24 @@ using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 using Windows.UI.Xaml.Navigation;
 
-// The User Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234236
+// The Blank Page item template is documented at http://go.microsoft.com/fwlink/?LinkId=234238
 
-namespace VancouverArtApp.Controls
+namespace VancouverArtApp
 {
-    public sealed partial class ArtListControl : UserControl
+    /// <summary>
+    /// An empty page that can be used on its own or navigated to within a Frame.
+    /// </summary>
+    public sealed partial class DetailPage : Page
     {
-        public ArtListControl()
+        public DetailPage()
         {
             this.InitializeComponent();
+            this.Loaded += DetailPage_Loaded;
         }
 
-        private void OnClick(object sender, ItemClickEventArgs e)
+        private void DetailPage_Loaded(object sender, RoutedEventArgs e)
         {
-            (Window.Current.Content as Frame).Navigate(typeof(DetailPage));
+            var bla = this.DataContext;
         }
     }
 }

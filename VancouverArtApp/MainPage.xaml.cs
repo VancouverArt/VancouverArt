@@ -30,16 +30,18 @@ namespace VancouverArtApp
         //private MobileServiceCollection<art_items, art_items> items;
         private IMobileServiceTable<art_items> artItemsTable = App.MobileService.GetTable<art_items>();
 
-
+        object mapHeader;
+        object listHeader;
         public MainPage()
         {
             this.InitializeComponent();
             _viewModel = DataContext as MainViewModel;
 
             Loaded += MainPage_Loaded;
-           // AddArtItemsData();
+            // AddArtItemsData();
 
-   
+            mapHeader = mapPivot.Header;
+            listHeader = overviewPivot.Header;
         }
 
         private void MainPage_Loaded(object sender, RoutedEventArgs e)
@@ -69,5 +71,23 @@ namespace VancouverArtApp
             //await SyncAsync(); // offline sync
         }
 
+        private void VisualStateGroup_CurrentStateChanged(object sender, VisualStateChangedEventArgs e)
+        {
+            SetStatelayout();
+        }
+
+        private void SetStatelayout()
+        {
+            if (VisualStateGroup.CurrentState == Small)
+            {
+                mapPivot.Header = mapHeader;
+                overviewPivot.Header = listHeader;
+            }
+            else
+            {
+                mapPivot.Header = null;
+                overviewPivot.Header = null;
+            }
+        }
     }
 }

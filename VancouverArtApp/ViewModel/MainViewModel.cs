@@ -2,6 +2,7 @@ using GalaSoft.MvvmLight;
 using GalaSoft.MvvmLight.Command;
 using System.Collections.ObjectModel;
 using VancouverArtApp.DataModel;
+using System.Linq;
 
 namespace VancouverArtApp.ViewModel
 {
@@ -26,6 +27,15 @@ namespace VancouverArtApp.ViewModel
             get { return _art; }
             set { _art = value; }
         }
+
+        private art_items selectedArt;
+
+        public art_items SelectedArt
+        {
+            get { return selectedArt; }
+            set { selectedArt = value; }
+        }
+
 
         IArtService _artService;
 
@@ -79,7 +89,7 @@ namespace VancouverArtApp.ViewModel
             {
                 _art.Add(item);
             }
-
+            SelectedArt = _art.FirstOrDefault();
         }
 
 
