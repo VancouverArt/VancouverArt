@@ -6,16 +6,63 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
-    d:DesignHeight="300"
-    d:DesignWidth="400">
+    d:DesignHeight="600"
+    d:DesignWidth="400"
+      DataContext="{Binding Main, Source={StaticResource Locator}}"
+    >
     <UserControl.Resources>
         <DataTemplate x:Key="DataTemplateArtItem">
-            <Grid Height="26" Width="203">
-                <TextBlock x:Name="textBlock" HorizontalAlignment="Left" Margin="0,0,0,6" TextWrapping="Wrap" Text="{Binding Title}" d:LayoutOverrides="Height"/>
+            <Grid Height="Auto" Margin="0,12,0,0" >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="60"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="Auto"/>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="Auto"/>
+           
+                </Grid.ColumnDefinitions>
+                
+                <Image Grid.Row="0" Width="80" Height="80" VerticalAlignment="Top" Grid.Column="0" Grid.RowSpan="2" Margin="0,0,12,0" Source="ms-appx:///Assets/diner1.jpg" Stretch="UniformToFill"/>
+                <TextBlock Grid.Row="0" Grid.Column="1" x:Name="textTitle" TextTrimming="CharacterEllipsis" FontWeight="ExtraLight" FontSize="24" VerticalAlignment="Top" TextLineBounds="TrimToCapHeight" Margin="0,0,0,0"  TextWrapping="NoWrap" Text="{Binding Title}" d:LayoutOverrides="Width, LeftPosition, RightPosition"/>
+                <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Artist}" Margin="0,0,0,0" FontWeight="Light" FontStyle="Italic"  VerticalAlignment="Center" HorizontalAlignment="Right" TextLineBounds="TrimToBaseline" Foreground="DarkGray"  />
+                <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" FontWeight="Light" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"  Text="{Binding Description}" />
+                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,8,0,0"  HorizontalAlignment="Right">
+                    <Button  Width="35"  Margin="0,0,35,0" Style="{StaticResource ButtonStyleChromeless}" >
+                        <Image Source="ms-appx:///Assets/Like - 01.png" Stretch="UniformToFill"/>
+                    </Button>
+                    <Button Width="35" Style="{StaticResource ButtonStyleChromeless}"  >
+                    <Image Source="ms-appx:///Assets/Reminder -02.png" Stretch="UniformToFill"/>
+                    </Button>
+                </StackPanel>
             </Grid>
         </DataTemplate>
+
+
+        <Style x:Key="ListViewItemStyle1" TargetType="ListViewItem">
+            <Setter Property="FontFamily" Value="{ThemeResource ContentControlThemeFontFamily}"/>
+            <Setter Property="FontSize" Value="{ThemeResource ControlContentThemeFontSize}"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="{ThemeResource SystemControlForegroundBaseHighBrush}"/>
+            <Setter Property="TabNavigation" Value="Local"/>
+            <Setter Property="IsHoldingEnabled" Value="True"/>
+            <Setter Property="Padding" Value="12,0,12,0"/>
+            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+            <Setter Property="VerticalContentAlignment" Value="Center"/>
+            <Setter Property="MinWidth" Value="{ThemeResource ListViewItemMinWidth}"/>
+            <Setter Property="MinHeight" Value="{ThemeResource ListViewItemMinHeight}"/>
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <ListViewItemPresenter CheckBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" ContentMargin="{TemplateBinding Padding}" CheckMode="Inline" ContentTransitions="{TemplateBinding ContentTransitions}" CheckBoxBrush="{ThemeResource SystemControlForegroundBaseMediumHighBrush}" DragForeground="{ThemeResource ListViewItemDragForegroundThemeBrush}" DragOpacity="{ThemeResource ListViewItemDragThemeOpacity}" DragBackground="{ThemeResource ListViewItemDragBackgroundThemeBrush}" DisabledOpacity="{ThemeResource ListViewItemDisabledThemeOpacity}" FocusBorderBrush="{ThemeResource SystemControlForegroundAltHighBrush}" FocusSecondaryBorderBrush="{ThemeResource SystemControlForegroundBaseHighBrush}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" PointerOverForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}" PressedBackground="{ThemeResource SystemControlHighlightListMediumBrush}" PlaceholderBackground="{ThemeResource ListViewItemPlaceholderBackgroundThemeBrush}" PointerOverBackground="{ThemeResource SystemControlHighlightListLowBrush}" ReorderHintOffset="{ThemeResource ListViewItemReorderHintThemeOffset}" SelectedPressedBackground="{ThemeResource SystemControlHighlightListAccentHighBrush}" SelectionCheckMarkVisualEnabled="True" SelectedForeground="{ThemeResource SystemControlHighlightAltBaseHighBrush}" SelectedPointerOverBackground="{ThemeResource SystemControlHighlightListAccentMediumBrush}" SelectedBackground="{ThemeResource SystemControlHighlightListAccentLowBrush}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}"/>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
     </UserControl.Resources>
     <Grid>
-        <ListView Grid.Column="1" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}"/>
+        <ListView Grid.Column="1" ItemsSource="{Binding Art}" ItemTemplate="{StaticResource DataTemplateArtItem}" ItemContainerStyle="{StaticResource ListViewItemStyle1}"/>
     </Grid>
 </UserControl>
