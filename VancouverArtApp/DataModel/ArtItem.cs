@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Text;
+using VancouverArtApp.DataModel;
 using Windows.Devices.Geolocation;
 using Windows.UI.Xaml;
 
@@ -52,6 +53,22 @@ namespace VancouverArtApp//ZUMOAPPNAME.DataModel
          
             }
         }
+
+        private double dist;
+
+        public double Distance
+        {
+            get {
+
+                return GeoCodeCalc.CalcDistance(Latitude, Longitude, 49.277 ,-122.914, GeoCodeCalcMeasurement.Kilometers);
+            }
+            set { dist = value; }
+        }
+
+        public string DistString { get {
+                return string.Format("{0} km", Math.Round(Distance, 1) );
+            } }
+
 
         public Visibility ReminderVisible { get {return _reminderOn? Visibility.Visible: Visibility.Collapsed; } }
 

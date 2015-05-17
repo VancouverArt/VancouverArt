@@ -29,17 +29,17 @@
                 <TextBlock Grid.Row="0" Grid.Column="1" x:Name="textTitle" TextTrimming="CharacterEllipsis" FontWeight="ExtraLight" FontSize="24" VerticalAlignment="Top" TextLineBounds="TrimToCapHeight" Margin="0,0,0,0"  TextWrapping="NoWrap" Text="{Binding Title}" d:LayoutOverrides="Width, LeftPosition, RightPosition"/>
                 <TextBlock Grid.Row="0" Grid.Column="2" Text="{Binding Artist}" Margin="0,0,0,4" FontWeight="Light" FontStyle="Italic"  VerticalAlignment="Center" HorizontalAlignment="Right" TextLineBounds="TrimToBaseline" Foreground="DarkGray"  />
                 <TextBlock Grid.Row="1" Grid.Column="1" Grid.ColumnSpan="2" FontSize="14" FontWeight="Light" TextWrapping="Wrap" TextTrimming="CharacterEllipsis"  Text="{Binding Description}" />
-                <StackPanel Grid.Row="2" Grid.ColumnSpan="3" Orientation="Horizontal" Margin="0,0,0,0"  HorizontalAlignment="Right">
+                <Grid Grid.Row="2" Grid.ColumnSpan="3" Margin="0,0,0,0"  HorizontalAlignment="Stretch">
                     <!--<Button  Width="36"  Margin="0,0,18,0" Style="{StaticResource ButtonStyleChromeless}" 
                              FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="2,2,2,2" Content="&#xE006;">
                        
                     </Button>-->
-                    <TextBlock Text="600m" />
-                    <Button Width="36" Visibility="{Binding ReminderVisible}" Style="{StaticResource ButtonStyleChromeless}" 
+                    <TextBlock FontSize="26" FontWeight="Light"  Text="{Binding DistString}" HorizontalAlignment="Left" />
+                    <Button Width="36" HorizontalAlignment="Right" Visibility="{Binding ReminderVisible}" Style="{StaticResource ButtonStyleChromeless}" 
                             FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="6,2,0,2" Content="&#xEA8F;">
                         <!--Image Source="ms-appx:///Assets/Reminder -02.png" Stretch="UniformToFill"/-->
                     </Button>
-                </StackPanel>
+                </Grid>
             </Grid>
         </DataTemplate>
 

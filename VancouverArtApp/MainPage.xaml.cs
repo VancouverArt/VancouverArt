@@ -54,6 +54,7 @@ namespace VancouverArtApp
 
             mapHeader = mapPivot.Header;
             listHeader = overviewPivot.Header;
+            SetStatelayout();
 
             InitGeolocation();
         }
