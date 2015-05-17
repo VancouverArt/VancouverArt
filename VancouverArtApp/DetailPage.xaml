@@ -5,15 +5,32 @@
     xmlns:local="using:VancouverArtApp"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-     DataContext="{Binding Main.SelectedArt, Source={StaticResource Locator}}"
+    DataContext="{Binding Main.SelectedArt, Source={StaticResource Locator}}"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="13*"/>
-            <RowDefinition Height="23*"/>
-        </Grid.RowDefinitions>
-        <TextBlock x:Name="textBlock" FontSize="46" TextWrapping="Wrap" Text="{Binding Title}"/>
+    <SplitView>
+        <SplitView.Pane>
+            <StackPanel>
+                <Button Width="36" Style="{StaticResource ButtonStyleChromeless}" 
+                            FontFamily="Segoe MDL2 Assets" FontSize="26" Padding="6,2,0,2" Content="&#xE0A6;" />
+            </StackPanel>
+        </SplitView.Pane>
+        <SplitView.Content>
 
-    </Grid>
+            <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+                <!--Grid.RowDefinitions>
+                    <RowDefinition Height="13*"/>
+                    <RowDefinition Height="23*"/>
+                </Grid.RowDefinitions-->
+                <Image x:Name="image" Source="{Binding ImageUrl}" />
+                <StackPanel Padding="12,12,0,0">
+                    <TextBlock x:Name="textTitle" FontSize="32" TextWrapping="Wrap" Text="{Binding Title}" />
+                    <TextBlock x:Name="textArtist" FontSize="18" TextWrapping="Wrap" Text="{Binding Artist}" />
+                </StackPanel>
+                <TextBlock x:Name="textDescription" FontSize="12" TextWrapping="Wrap" Text="{Binding Description}" VerticalAlignment="Bottom" Padding="12,12,12,12"/>
+            </Grid>
+            
+        </SplitView.Content>
+    </SplitView>
+    
 </Page>
